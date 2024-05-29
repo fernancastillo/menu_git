@@ -13,10 +13,28 @@ while True:
     print("2. Registrar usuario.")
     print("3. Eliminar usuario.")
     print("4. Salir.")
-    opc=int(input("Ingrese el número del menú: "))
+    while True:
+        try:
+            opc=int(input("Ingrese el número del menú: "))
+            if opc in (1,2,3,4):
+                break
+            else:
+                print("Error! Debe ingresar un número del 1 al 4!")
+        except:
+            print("Error! Debe ingresar un número entero!")
     if opc==1:
-        nombre=input("Ingrese su nombre de usuario: ")
-        contra=input("Ingrese la contraseña: ")
+        while True:
+            nombre=input("Ingrese su nombre de usuario: ")
+            if len(nombre)>=3:
+                break
+            else:
+                print("Error! Debe ingresar mínimo 3 caracteres!")
+        while True:
+            contra=input("Ingrese la contraseña: ")
+            if len(contra)>=3:
+                break
+            else:
+                print("Error! Debe ingresar mínimo 3 caracteres!")
         for x in range (len(usuarios)):
             if nombre==usuarios[x]["nombre"] and contra==usuarios[x]["contra"]:
                 print("Sesión iniciada con éxito!")
@@ -24,8 +42,18 @@ while True:
                 print("Usuario o contraseña incorrectos!")
     elif opc==2:
         print("REGISTRAR USUARIO")
-        nombre=input("Ingrese su nombre de usuario: ")
-        contra=input("Ingrese su contraseña: ")
+        while True:
+            nombre=input("Ingrese su nombre de usuario: ")
+            if len(nombre)>=3:
+                break
+            else:
+                print("Error! Debe ingresar mínimo 3 caracteres!")
+        while True:
+            contra=input("Ingrese la contraseña: ")
+            if len(contra)>=3:
+                break
+            else:
+                print("Error! Debe ingresar mínimo 3 caracteres!")
         usuario={
             "nombre":nombre,
             "contra":contra
@@ -34,10 +62,20 @@ while True:
         print("Usuario agregado con éxito!")
     elif opc==3:
         print("ELIMINAR USUARIO")
-        nombre=input("Ingrese el nombre de usuario: ")
+        while True:
+            nombre=input("Ingrese su nombre de usuario: ")
+            if len(nombre)>=3:
+                break
+            else:
+                print("Error! Debe ingresar mínimo 3 caracteres!")
         for x in range (len(usuarios)):
             if nombre==usuarios[x]["nombre"]:
-                contra=input("Ingrese la contraseña: ")
+                while True:
+                    contra=input("Ingrese la contraseña: ")
+                    if len(contra)>=3:
+                        break
+                    else:
+                        print("Error! Debe ingresar mínimo 3 caracteres!")
                 if contra==usuarios[x]["contra"]:
                     usuarios.pop(x)
                     print("Usuario eliminado con éxito!")
@@ -45,5 +83,6 @@ while True:
                     print("Contraseña incorrecta!")
             else:
                 print("Usuario no registrado!")
-    else:   
+    else:
+        print("Hasta la próxima!")   
         break
