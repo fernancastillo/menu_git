@@ -7,6 +7,7 @@ print("Bienvenido al menú.")
 while True:
     print("Presione una tecla para continuar.")
     msvcrt.getch()
+    os.system("cls")
     print("Menú")
     print("1. Inicio sesión.")
     print("2. Registrar usuario.")
@@ -14,7 +15,13 @@ while True:
     print("4. Salir.")
     opc=int(input("Ingrese el número del menú: "))
     if opc==1:
-        pass
+        nombre=input("Ingrese su nombre de usuario: ")
+        contra=input("Ingrese la contraseña: ")
+        for x in range (len(usuarios)):
+            if nombre==usuarios[x]["nombre"] and contra==usuarios[x]["contra"]:
+                print("Sesión iniciada con éxito!")
+            else:
+                print("Usuario o contraseña incorrectos!")
     elif opc==2:
         print("REGISTRAR USUARIO")
         nombre=input("Ingrese su nombre de usuario: ")
